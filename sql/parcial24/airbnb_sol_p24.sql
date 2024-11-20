@@ -16,7 +16,7 @@ ORDER BY total_review DESC
 LIMIT 7;
 
 /*2 
-profe: la propiedad puede aparecer varias veces, no es necesario agrupar*/
+la propiedad puede aparecer varias veces, no es necesario agrupar*/
 
 SELECT properties.id AS propertyId, properties.name, properties.price_per_night, 
 	bookings.id AS bookingId, bookings.check_in, bookings.check_out,
@@ -49,9 +49,9 @@ END; //
 DELIMITER ; 
 
 /*5 
-profe: no hace falta calcular total price
+no hace falta calcular total price
 
-no tuve tiempo de calcular la disponibilidad*/
+falta calcular la disponibilidad*/
 
 DROP PROCEDURE IF EXISTS add_new_booking;
 
@@ -75,12 +75,5 @@ DELIMITER ;
 CREATE ROLE `admin`;
 GRANT CREATE ON airbnb_like_db.properties TO `admin`;
 GRANT UPDATE (status) ON airbnb_like_db.property_availability TO `admin`;
-
-/*7 no contradice la propiedad de durabilidad: "Una vez que una transacción se ha completado, sus efectos son 
-permanentes" porque los cambios se guardan permanentemente luego de commit, 
-es decir que si hacemos la transacción ahora todavía pueden realizarse modificaciones.
-todavía se encuentra activa o parcialmente confirmado el resto de las cosas hechas en la BD*/  
-
-
 
 
